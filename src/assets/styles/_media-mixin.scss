@@ -1,0 +1,16 @@
+//Применение @inculde _768{}
+@mixin mediaD {
+    @media (max-width: 1366px) {
+        @content;
+    }
+}
+@mixin mediaT {
+    @media (max-width: 1024px) and (min-width: 768px) {
+        @content;
+    }
+}
+@mixin mediaM {
+    @media (max-width: 768px) {
+        @content;
+    }
+}

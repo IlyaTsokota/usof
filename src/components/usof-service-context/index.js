@@ -1,5 +1,9 @@
-import React from 'react';
+import {
+    UsofServiceProvider,
+    UsofServiceConsumer,
+} from './usof-service-context';
 
-const UsofServiceContext = React.createContext();
-
-export default UsofServiceContext;
+export {
+    UsofServiceProvider,
+    UsofServiceConsumer,
+};

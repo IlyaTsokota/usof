@@ -1,0 +1,85 @@
+@mixin font($font_name, $file_name, $weight, $style) {
+    @font-face {
+        font-family: $font_name;
+        font-display: swap;
+        src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-style: #{$style};
+    }
+}
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 320;
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+@mixin df {
+    display: flex;
+}
+
+// Блочный элемент по центру
+@mixin push--auto {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+// Для before, after
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin border-radius($topLeft, $topRight, $bottomRight, $bottomLeft) {
+    border-radius: $topLeft $topRight $bottomRight $bottomLeft;
+}
+
+@mixin box-shadow($horizOffset, $vertOffset, $blur, $color) {
+    box-shadow: $horizOffset $vertOffset $blur $color;
+    border-collapse: separate;
+}
+
+@mixin box-shadow-inset($horizOffset, $vertOffset, $blur, $color) {
+    box-shadow: $horizOffset $vertOffset $blur $color inset;
+}
+
+@mixin background-clip {
+    background-clip: padding-box;
+}
+
+@mixin background-gradient($direction, $first-color, $second-color) {
+    background: $first-color;
+    background-image: linear-gradient($direction, $first-color, $second-color);
+    @include background-clip;
+}
+
+// Цвет  placeholder в input @import phcolor;
+@mixin phcolor($plcolor) {
+    &::-webkit-input-placeholder {
+        color: $plcolor;
+    }
+    &:-moz-placeholder {
+        color: $plcolor;
+    }
+    &::-moz-placeholder {
+        color: $plcolor;
+    }
+    &:-ms-input-placeholder {
+        color: $plcolor;
+    }
+}
+
+// Сделать черно-белым
+@mixin gr {
+    filter: grayscale(100%);
+    filter: gray;
+}
+
+// Снова цветным
+@mixin grh {
+    filter: grayscale(0%);
+    filter: none;
+}

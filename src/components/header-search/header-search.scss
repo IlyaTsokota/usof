@@ -1,0 +1,30 @@
+.header-search {
+    display: flex;
+    align-items: center;
+
+    input {
+        color: #000;
+        font-size: 18px;
+        padding: 5px 15px;
+        background-color: #fff;
+        border-radius: 25px;
+
+        &::placeholder {
+            color: #3c3c3c;
+        }
+
+        &:focus {
+            border: 2px solid rgba(23, 165, 247, 0.76);
+        }
+    }
+
+    button {
+        background-color: transparent;
+    }
+
+    svg {
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+    }
+}

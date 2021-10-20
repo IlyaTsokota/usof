@@ -1,23 +1,25 @@
 import actionTypes from "ActionTypes";
 import login from "./login";
-import register from "./register";
 import logout from "./logout";
 import changePassword from "./change-password";
 
 const updateUser = (state, action) => {
     if (state === undefined) {
-        return null;
+        return {
+            isLogged: false,
+            id: null,
+            login: null,
+            email: null,
+        };
     }
 
     switch (action.type) {
         case actionTypes.userLogin:
-            return login(action.payload);
-        case actionTypes.userRegister:
-            return register(action.payload);
+            return login(state.user, action.payload);
         case actionTypes.userLogout:
-            return logout(action.payload);
+            return logout(state.user, action.payload);
         case actionTypes.userChangePassword:
-            return changePassword(action.payload);
+            return changePassword(state.user, action.payload);
         default:
             return state.user;
     }

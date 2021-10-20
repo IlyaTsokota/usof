@@ -1,0 +1,15 @@
+.error-message {
+  font-size: 25px;
+  text-align: center;
+  margin: 15px 0;
+  width: 100%;
+
+  &__text {
+    color: #ffffff;
+    font-size: 25px;
+    padding: 10px 15px;
+    background-color: tomato;
+    text-align: center;
+    border-radius: 25px;
+  }
+}

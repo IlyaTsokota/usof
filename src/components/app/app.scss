@@ -7,13 +7,13 @@
 @import "Assets/styles/btn";
 
 .page {
+    margin-top: 40px;
     width: 100%;
     height: 100%;
-    &__content-center {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+}
+
+main {
+    padding-bottom: 40px !important;
 }
 
 .form__container {
@@ -48,6 +48,7 @@ input {
 }
 
 .btn-submit {
+    cursor: pointer;
     font-size: 18px;
     width: 100%;
     background-color: #2ab440;
@@ -63,6 +64,20 @@ input {
         background-color: #18aa30;
     }
 }
+
+.btn-center {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.btn-sm {
+    width: 250px;
+}
+
+.text-white {
+    color: #fff;
+}
+
 .input__container {
     width: 100%;
     margin-top: 30px;

@@ -1,7 +1,7 @@
 import withUsofService from "./with-usof-service";
-import withFormWrapper from "./with-form-wrapper";
+import withFormik from "./with-formik";
 
 export {
     withUsofService,
-    withFormWrapper,
+    withFormik,
 };

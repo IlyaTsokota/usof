@@ -1,15 +1,54 @@
 import actionTypes from "ActionTypes";
+import {
+    fetchData,
+    fetchDataPromise,
+} from "../utills/fetch-data";
 
-const userLogin = (data) => {
-    console.log(data);
+const userLoginSuccess = (data) => ({ type: actionTypes.userLoginSuccess, payload: data, });
+const userLoginFail = () => actionTypes.userLoginFail;
 
-    return {
-        type: actionTypes.userLogin,
-        payload: data,
-    }
+const fetchUserLogin = (service) => (data, setSubmitting) => (dispatch) => {
+    console.log(data)
+
+    fetchData({
+        service,
+        data,
+        setSubmitting,
+        dispatch,
+        success: userLoginSuccess,
+        fail: userLoginFail,
+    });
+};
+
+const setDefault = (type) => (dispatch) => {
+    dispatch(type);
+};
+
+const userRegisterSuccess =() => actionTypes.userRegisterSuccess;
+const userRegisterFail = () => actionTypes.userRegisterFail;
+
+const fetchUserRegister = (service) => (data, setSubmitting) => (dispatch) => {
+    fetchData({
+        service,
+        data,
+        setSubmitting,
+        dispatch,
+        success: userRegisterSuccess,
+        fail: userRegisterFail,
+    });
+};
+
+const fetchUserEmailVerify = (service) => (data) => (dispatch) => {
+    return fetchDataPromise({
+        service,
+        data,
+    });
 };
 
 
 export {
-    userLogin,
+    fetchUserLogin,
+    fetchUserRegister,
+    setDefault,
+    fetchUserEmailVerify,
 };

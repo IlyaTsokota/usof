@@ -1,3 +1,7 @@
 import Title from "./title";
+import Subtitle from "./subtitle";
 
-export default Title;
+export {
+    Title,
+    Subtitle,
+};

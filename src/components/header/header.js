@@ -18,8 +18,8 @@ const HeaderNav = (props) => (
     </nav>
 );
 
-const HeaderContent = ({ user, history }) => {
-    if (!user) {
+const HeaderContent = ({ user: { isLogged, login }, history }) => {
+    if (!isLogged) {
         return (
             <div className="header__links">
                 <button className="btn btn-mini btn-green" onClick={() => history.push('/login')}>Sign In</button>
@@ -28,11 +28,10 @@ const HeaderContent = ({ user, history }) => {
         );
     }
 
-    const { icon, login } = user;
     return (
         <div className="header__profile">
             <div className="header__profile-img">
-                <img src={icon} alt={login} />
+                <img src="" alt={login} />
                 <p>{login}</p>
             </div>
         </div>

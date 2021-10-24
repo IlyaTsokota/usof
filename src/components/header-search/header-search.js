@@ -13,8 +13,11 @@ const HeaderSearch = () => {
             className="header-search"
             onSubmit={(e) => {
                 e.preventDefault();
-                history.push(`/search?term=${searchTerm.trim().toLocaleLowerCase()}`);
-                setSearchTerm('');
+                const term = searchTerm.trim().toLocaleLowerCase();
+                if (term) {
+                    history.push(`/search?term=${term}`);
+                    setSearchTerm('');
+                }
             }}
         >
             <input

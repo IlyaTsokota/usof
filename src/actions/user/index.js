@@ -38,7 +38,7 @@ const fetchUserRegister = (service) => (data, setSubmitting) => (dispatch) => {
     });
 };
 
-const fetchUserEmailVerify = (service) => (data) => (dispatch) => {
+const fetchUserEmailVerify = (service) => (data) => () => {
     return fetchDataPromise({
         service,
         data,

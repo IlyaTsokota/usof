@@ -1,0 +1,26 @@
+.pagination {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__link {
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px;
+
+    &-active {
+      background-color: #000;
+      color: #2AB440;
+    }
+
+    &-disabled {
+      color: #c9c9c9;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}

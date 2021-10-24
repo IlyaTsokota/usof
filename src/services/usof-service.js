@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost/usof-last-back/usof/public/index.php/api';
+axios.defaults.baseURL = 'http://localhost/usof/public/index.php/api';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export default class UsofService {
@@ -11,8 +11,27 @@ export default class UsofService {
         return response;
     }
 
-    async getPosts() {
-        const response = await axios.get('/posts');
+    async search(data) {
+        const response = await axios.get('/posts/search', {
+            params: {
+                ...data,
+            }
+        });
+
+        return response;
+    }
+
+    async getCategories() {
+        const response = await axios.get('/categories');
+
+        return response;
+    }
+    async getPosts(data) {
+        const response = await axios.get('/posts', {
+            params: {
+                ...data,
+            }
+        });
 
         return response;
     }
@@ -22,8 +41,6 @@ export default class UsofService {
 
         return response;
     }
-
-
 
     async login(data) {
         const response = await axios.post('/auth/login', data);
@@ -48,6 +65,4 @@ export default class UsofService {
 
         return response;
     }
-
-
 }

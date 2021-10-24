@@ -3,7 +3,7 @@ import './full-page-loader.scss';
 import spinner from './spinner.svg';
 
 const FullPageLoader = () => (
-    <div className='full-page-loader'>
+    <div className='full-page-loader in-component'>
         <img src={spinner} className='full-page-loader__spinner' alt='' />
     </div>
 );

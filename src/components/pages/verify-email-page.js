@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import FullPageLoader from "../full-page-loader";
 import ErrorMsg from "../error-message";
 import PageContainer from "Containers/page-container";
@@ -9,13 +9,13 @@ import { fetchUserEmailVerify } from "Actions";
 import { withUsofService } from "../hoc";
 import { Subtitle } from "../title";
 
-const VerifyEmailPage = ({verification}) => {
+const VerifyEmailPage = ({ verification }) => {
     const history = useHistory();
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        const {pathname, search} = history.location;
+        const { pathname, search } = history.location;
         verification(`${pathname}${search}`)
             .then(() => {
                 setSuccess(true);
@@ -23,7 +23,7 @@ const VerifyEmailPage = ({verification}) => {
             .catch(() => {
                 setError(true);
             });
-    }, [history.location])
+    }, [verification, history.location])
 
     const content = success ? (
             <>

@@ -1,12 +1,14 @@
 import React from 'react';
 import './app.scss';
-import { Route, Switch } from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import MainContainer from 'Containers/main-container';
 import {
     LoginPage,
     RegisterPage,
     ConfirmEmailPage,
     VerifyEmailPage,
+    QuestionsListPage,
+    SearchPage,
 } from '../pages';
 
 const App = () => {
@@ -14,8 +16,10 @@ const App = () => {
         <>
             <MainContainer>
                 <Switch>
-                    <Route path="/" component={() => <h1 >Main page</h1>} exact />
-                    <Route exact path="/search" component={() => <h1>Test search</h1>} />
+                    <Route path="/" render={() => <Redirect to='/questions' />} exact />
+                    <Route path="/questions" component={QuestionsListPage} exact />
+                    <Route path="/questions/:id" render={() => <p>Test PDP</p>} exact />
+                    <Route exact path="/search" component={SearchPage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
                     <Route path="/verify-register"  component={ConfirmEmailPage} />

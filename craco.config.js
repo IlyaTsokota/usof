@@ -1,7 +1,18 @@
 const path = require('path');
+const { addBeforeLoader, loaderByName } = require("@craco/craco");
 
 module.exports = {
     webpack: {
+        configure: function(webpackConfig) {
+            const svgLoader = {
+                test: /\.svg$/,
+                use: ['@svgr/webpack'],
+            };
+
+            addBeforeLoader(webpackConfig, loaderByName("file-loader"), svgLoader);
+
+            return webpackConfig;
+        },
         alias: {
             Utils: path.resolve(__dirname, 'src/utils/'),
             Components: path.resolve(__dirname, 'src/components/'),

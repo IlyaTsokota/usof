@@ -1,10 +1,12 @@
 import React from "react";
 import './full-page-loader.scss';
-import spinner from './spinner.svg';
+import Spinner from "../spinner";
+
+
 
 const FullPageLoader = () => (
     <div className='full-page-loader in-component'>
-        <img src={spinner} className='full-page-loader__spinner' alt='' />
+        <Spinner />
     </div>
 );
 

@@ -3,20 +3,26 @@ import './question-list-item.scss';
 import {useHistory} from "react-router-dom";
 import {FacebookShareButton} from "react-share";
 import {withLike} from "../hoc";
+import Spinner from "../spinner";
 
-const RatingContent = ({likes, onLike, onDislike}) => (
-    <div className='question-list-item__rating'>
-        <div className='question-list-item__rating-minus' onClick={() => onDislike()} >
-            -
+const RatingContent = ({likes, onLike, onDislike, loading}) => {
+    const isLogged = localStorage.getItem('user');
+
+    return (
+        <div className='question-list-item__rating'>
+            {isLogged && <div className='question-list-item__rating-minus' onClick={() => onDislike()} >
+                -
+            </div>}
+            <div className='question-list-item__rating-count'>
+                <span>Rating:</span>
+                {loading ? <Spinner classes='spinner__img-mini' /> : likes}
+            </div>
+            {isLogged && <div className='question-list-item__rating-plus' onClick={() => onLike()}>
+                +
+            </div>}
         </div>
-        <div className='question-list-item__rating-count'>
-            {likes}
-        </div>
-        <div className='question-list-item__rating-plus' onClick={() => onLike()}>
-            +
-        </div>
-    </div>
-);
+    );
+};
 
 const Rating = withLike(RatingContent);
 

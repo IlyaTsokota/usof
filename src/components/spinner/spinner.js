@@ -1,10 +1,11 @@
 import React from 'react';
 import './spinner.scss';
+import SpinnerIcon from './spinner.svg';
 
-const Spinner = () => {
+const Spinner = ({classes = ''}) => {
     return (
-        <div>
-            Loading...
+        <div className='spinner'>
+            <SpinnerIcon className={`spinner__img ${classes}`} />
         </div>
     );
 };

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { ReactComponent as SearchIcon } from './magnifier.svg';
+import SearchIcon from './magnifier.svg';
 import './header-search.scss';
 import { useHistory } from 'react-router-dom';
-
 
 const HeaderSearch = () => {
     const [searchTerm, setSearchTerm] = useState('');

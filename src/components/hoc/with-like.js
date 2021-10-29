@@ -4,13 +4,17 @@ import {fetchDataPromise} from "../../actions/utills/fetch-data";
 const withLike = (Wrapped) => {
     return ({usofService, id}) => {
         const [likes, setLikes] = useState(0);
-        const getLikes = useCallback(() => fetchDataPromise({
-            service: usofService.getLikes,
-            data: id
-        }).then((resp) => {
-            console.log(resp)
-            setLikes(resp.data);
-        }), [id, usofService]);
+        const [loading, setLoading] = useState(true);
+        const getLikes = useCallback(() => {
+            setLoading(true);
+            fetchDataPromise({
+                service: usofService.getLikes,
+                data: id
+            }).then((resp) => {
+                setLikes(resp.data);
+                setLoading(false);
+            });
+        }, [id, usofService, setLoading]);
 
         const onLike = () => fetchDataPromise({
             service: usofService.addLike,
@@ -30,7 +34,7 @@ const withLike = (Wrapped) => {
             getLikes();
         },[getLikes]);
 
-        return <Wrapped likes={likes} onLike={onLike} onDislike={onDislike} />;
+        return <Wrapped likes={likes} onLike={onLike} onDislike={onDislike} loading={loading}/>;
     };
 };
 

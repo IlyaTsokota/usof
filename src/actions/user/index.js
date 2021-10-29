@@ -6,10 +6,9 @@ import {
 
 const userLoginSuccess = (data) => ({ type: actionTypes.userLoginSuccess, payload: data, });
 const userLoginFail = () => actionTypes.userLoginFail;
+const userLogout = () => actionTypes.userLogout;
 
 const fetchUserLogin = (service) => (data, setSubmitting) => (dispatch) => {
-    console.log(data)
-
     fetchData({
         service,
         data,
@@ -45,10 +44,19 @@ const fetchUserEmailVerify = (service) => (data) => () => {
     });
 };
 
+const fetchUserLogout = (service) => (data) => (dispatch) => {
+    return fetchDataPromise({
+        service,
+        data,
+    }).then(() => {
+        dispatch(userLogout())
+    });
+};
 
 export {
     fetchUserLogin,
     fetchUserRegister,
     setDefault,
     fetchUserEmailVerify,
+    fetchUserLogout,
 };

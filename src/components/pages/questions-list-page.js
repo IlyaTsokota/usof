@@ -35,7 +35,6 @@ const QuestionsListPage = memo(({ usofService }) => {
                 filter: filters,
             },
         }).then((response) => {
-            console.log(response);
             const {data, links} = response.data;
             const url = response.request.responseURL;
             const index = url.indexOf('?');
@@ -61,7 +60,7 @@ const QuestionsListPage = memo(({ usofService }) => {
                         {
                             loading ? <FullPageLoader  />
                                 : error || !questions.length ? <Subtitle text='Questions Not Found!' />
-                                : <QuestionsList paginationLinks={paginationLinks} questions={questions} setCurrentPage={setNumberPage} />
+                                : <QuestionsList paginationLinks={paginationLinks} questions={questions} setCurrentPage={setNumberPage} usofService={usofService} />
                         }
                     </Grid>
                     <Grid item xs={2}>

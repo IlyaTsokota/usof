@@ -1,10 +1,18 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost/usof/public/index.php/api';
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+function setToken(token) {
+    axios.defaults.headers.common = {'Authorization': `bearer ${token}`}
+}
+
+function defaultSettings() {
+    axios.defaults.baseURL = 'http://localhost/usof/public/index.php/api';
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    setToken(localStorage.getItem('token'));
+}
+
+defaultSettings();
 
 export default class UsofService {
-
     async getUsers() {
         const response = await axios.get('/users');
 
@@ -26,6 +34,7 @@ export default class UsofService {
 
         return response;
     }
+
     async getPosts(data) {
         const response = await axios.get('/posts', {
             params: {
@@ -43,14 +52,18 @@ export default class UsofService {
     }
 
     async login(data) {
-        const response = await axios.post('/auth/login', data);
+        const response = await axios.post('/auth/login', data)
+            .then((resp) => {
+                setToken(resp.data.token);
+                return resp;
+            });
 
         return response;
     }
 
     async logout() {
-        const response = await axios.post('/auth/logout', {});
-
+        const response = await axios.post('/auth/logout');
+        setToken(null);
         return response;
     }
 
@@ -63,6 +76,31 @@ export default class UsofService {
     async verify(url) {
         const response = await axios.get(url);
 
+        return response;
+    }
+
+    async getLikes(id) {
+        const response = await axios.get(`/posts/${id}/like`);
+        return response;
+    }
+
+    async addLike(id) {
+        const response = await axios.post(`/posts/${id}/like`);
+        return response;
+    }
+
+    async addDislike(id) {
+        const response = await axios.post(`/posts/${id}/dislike`);
+        return response;
+    }
+
+    async removeLike(id) {
+        const response = await axios.delete(`/posts/${id}/like`);
+        return response;
+    }
+
+    async removeDislike(id) {
+        const response = await axios.delete(`/posts/${id}/dislike`);
         return response;
     }
 }

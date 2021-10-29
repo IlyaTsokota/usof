@@ -3,6 +3,7 @@ import {
     fetchUserRegister,
     setDefault,
     fetchUserEmailVerify,
+    fetchUserLogout,
 } from "./user";
 
 export {
@@ -10,4 +11,5 @@ export {
     fetchUserRegister,
     setDefault,
     fetchUserEmailVerify,
+    fetchUserLogout,
 };

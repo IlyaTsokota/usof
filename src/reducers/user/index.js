@@ -5,16 +5,16 @@ import changePassword from "./change-password";
 
 const updateUser = (state, action) => {
     if (state === undefined) {
+        const user = JSON.parse(localStorage.getItem('user'));
+
         return {
-            isLogged: false,
-            id: null,
-            login: null,
-            email: null,
+            isLogged: !!user || false,
+            data: user,
         };
     }
 
     switch (action.type) {
-        case actionTypes.userLogin:
+        case actionTypes.userLoginSuccess:
             return login(state.user, action.payload);
         case actionTypes.userLogout:
             return logout(state.user, action.payload);

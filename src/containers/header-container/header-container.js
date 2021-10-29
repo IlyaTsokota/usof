@@ -2,8 +2,11 @@ import React from 'react';
 import './header-container.scss';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import {bindActionCreators} from "redux";
+import {fetchUserLogout} from "../../actions";
+import {withUsofService} from "../../components/hoc";
 
-const HeaderContainer = ({ user, children }) => {
+const HeaderContainer = ({ user, onLogout, children }) => {
     const history = useHistory();
 
     return (
@@ -12,7 +15,11 @@ const HeaderContainer = ({ user, children }) => {
                 <div className="header__inner">
                     {
                         React.Children.map(children, (child) => {
-                            return React.cloneElement(child, { user, history });
+                            return React.cloneElement(child, {
+                                user,
+                                history,
+                                onLogout
+                            });
                         })
                     }
                 </div>
@@ -25,4 +32,13 @@ const mapStateToProps = ({ user }) => {
     return { user };
 };
 
-export default connect(mapStateToProps)(HeaderContainer);
+const mapDispatchToProps = (dispatch, { usofService }) => {
+    return bindActionCreators(
+        {
+            onLogout: fetchUserLogout(usofService.logout),
+        },
+        dispatch
+    );
+};
+
+export default withUsofService()(connect(mapStateToProps, mapDispatchToProps)(HeaderContainer));

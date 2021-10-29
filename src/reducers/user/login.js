@@ -1,8 +1,11 @@
-const login = (state, data) => {
-    console.log(data);
+const login = (state, resp) => {
+    const {user, token} = resp.data;
+
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', token);
 
     return {
-        ...state,
+        ...user,
         isLogged: true,
     };
 };

@@ -44,8 +44,6 @@ const QuestionsListFilters = memo(({ usofService, sorting, setSorting, filters, 
         });
     };
 
-    console.log(filters);
-
     return (
       <div className='questions-list-filters'>
           <FormControl fullWidth>

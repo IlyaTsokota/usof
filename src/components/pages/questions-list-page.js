@@ -60,7 +60,7 @@ const QuestionsListPage = memo(({ usofService }) => {
                         {
                             loading ? <FullPageLoader  />
                                 : error || !questions.length ? <Subtitle text='Questions Not Found!' />
-                                : <QuestionsList paginationLinks={paginationLinks} questions={questions} setCurrentPage={setNumberPage} usofService={usofService} />
+                                : <QuestionsList paginationLinks={paginationLinks} questions={questions} setCurrentPage={setNumberPage} />
                         }
                     </Grid>
                     <Grid item xs={2}>

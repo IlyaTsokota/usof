@@ -3,25 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-code-block": "^31.0.0",
+    "@ckeditor/ckeditor5-upload": "^31.0.0",
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.5",
-    "@mui/material": "^5.0.4",
+    "@mui/material": "^5.0.6",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "formik": "^2.2.9",
     "prop-types": "^15.7.2",
     "query-string": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-share": "^4.4.0",
-    "redux": "^4.1.1",
-    "redux-thunk": "^2.3.0"
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.0"
   },
   "scripts": {
     "start": "craco start",
@@ -48,12 +50,14 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^6.2.0",
+    "@ckeditor/ckeditor5-build-classic": "^31.0.0",
+    "@ckeditor/ckeditor5-react": "^3.0.3",
+    "@craco/craco": "^6.4.0",
     "@svgr/webpack": "^5.5.0",
-    "eslint": "^7.30.0",
+    "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-babel": "^5.3.1",
-    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react": "^7.26.1",
     "node-sass": "^6.0.1",
     "svg-url-loader": "^7.1.1"
   }

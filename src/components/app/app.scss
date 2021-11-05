@@ -47,6 +47,7 @@ input {
     }
 }
 
+
 .btn-submit {
     cursor: pointer;
     font-size: 18px;
@@ -82,6 +83,24 @@ input {
     width: 100%;
     margin-top: 30px;
     position: relative;
+
+
+    select {
+        font-size: 18px;
+        width: 100%;
+        background-color: #000;
+        border-radius: 25px;
+        padding: 8px 25px;
+        border: 4px solid transparent;
+
+        &:focus {
+            border-color: cyan;
+        }
+    }
+
+    .ck-content {
+        color: #000;
+    }
 }
 
 .error {
@@ -106,4 +125,9 @@ input {
     color: #000;
     cursor: pointer;
     margin-top: 25px;
+}
+
+.question-details-page {
+    max-width: 600px;
+    margin: 40px auto 0;
 }

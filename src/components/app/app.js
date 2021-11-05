@@ -9,6 +9,9 @@ import {
     VerifyEmailPage,
     QuestionsListPage,
     SearchPage,
+    QuestionDetailsPage,
+    MyQuestionsPage,
+    QuestionAddPage,
 } from '../pages';
 
 const App = () => {
@@ -18,13 +21,14 @@ const App = () => {
                 <Switch>
                     <Route path="/" render={() => <Redirect to='/questions' />} exact />
                     <Route path="/questions" component={QuestionsListPage} exact />
-                    <Route path="/questions/:id" render={() => <p>Test PDP</p>} exact />
-                    <Route exact path="/search" component={SearchPage} />
+                    <Route path="/questions/:id" component={QuestionDetailsPage} exact />
+                    <Route path="/search" component={SearchPage} exact />
+                    <Route path="/my-questions" component={MyQuestionsPage} exact />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
                     <Route path="/verify-register"  component={ConfirmEmailPage} />
                     <Route path="/auth/email/verify/:request"  component={VerifyEmailPage} exact />
-
+                    <Route path="/create/question" component={QuestionAddPage} exact />
                     <Route render={() => <h1>This page not found!</h1>} />
                 </Switch>
             </MainContainer>

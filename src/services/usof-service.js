@@ -99,8 +99,44 @@ export default class UsofService {
         return response;
     }
 
+    async removePost(id) {
+        const response = await axios.delete(`/posts/${id}`);
+        return response;
+    }
+
     async removeDislike(id) {
         const response = await axios.delete(`/posts/${id}/dislike`);
+        return response;
+    }
+
+    async addAnswer({id, content}) {
+        const response = await axios.post(`/posts/${id}/comments`, {content});
+        return response;
+    }
+
+    async getAnswers(id) {
+        const response = await axios.get(`/posts/${id}/comments`);
+        return response;
+    }
+
+    async getMyPosts(data) {
+        const response = await axios.get(`/posts/my`, {
+            params: {
+                ...data,
+            }
+        });
+
+        return response;
+    }
+
+    async createPost(data) {
+        console.log(data)
+        const response = await axios.post('/posts', {
+            title: data.title,
+            'category_id': [+data.category],
+            body: data.body,
+        });
+
         return response;
     }
 }

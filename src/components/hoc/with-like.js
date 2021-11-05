@@ -1,20 +1,21 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {fetchDataPromise} from "../../actions/utills/fetch-data";
 
 const withLike = (Wrapped) => {
     return ({usofService, id}) => {
         const [likes, setLikes] = useState(0);
         const [loading, setLoading] = useState(true);
+        const serviceGetLikes = useMemo(() => usofService.getLikes, [usofService]);
         const getLikes = useCallback(() => {
             setLoading(true);
             fetchDataPromise({
-                service: usofService.getLikes,
+                service: serviceGetLikes,
                 data: id
             }).then((resp) => {
                 setLikes(resp.data);
                 setLoading(false);
             });
-        }, [id, usofService, setLoading]);
+        }, [id, serviceGetLikes]);
 
         const onLike = () => fetchDataPromise({
             service: usofService.addLike,
@@ -32,6 +33,11 @@ const withLike = (Wrapped) => {
 
         useEffect(() => {
             getLikes();
+
+            return () => {
+                setLoading(true);
+                setLikes(0);
+            };
         },[getLikes]);
 
         return <Wrapped likes={likes} onLike={onLike} onDislike={onDislike} loading={loading}/>;

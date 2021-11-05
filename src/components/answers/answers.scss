@@ -1,0 +1,47 @@
+.answers {
+    margin-top: 25px;
+
+    .spinner {
+        &__img {
+            fill: #000;
+        }
+    }
+
+    &-item {
+        background-color: #000;
+        border-radius: 25px;
+        padding: 15px 25px;
+        color: #fff;
+
+        & + & {
+            margin-top: 15px;
+        }
+
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &-name {
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            &-date {
+                color: #c9c9c9;
+                font-size: 14px;
+            }
+        }
+
+        &__content {
+            margin-top: 15px;
+            font-size: 16px;
+            line-height: 1.4;
+
+            a {
+                color: #00a3ff;
+                text-decoration: underline;
+            }
+        }
+    }
+}

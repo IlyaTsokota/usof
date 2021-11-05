@@ -5,7 +5,7 @@ const login = (state, resp) => {
     localStorage.setItem('token', token);
 
     return {
-        ...user,
+        data: user,
         isLogged: true,
     };
 };

@@ -1,0 +1,28 @@
+.question-details-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__share {
+        margin-left: 15px;
+    }
+
+    .rating {
+        .spinner {
+            &__img {
+                fill: #000;
+            }
+        }
+    }
+}
+
+.question-details-body {
+    font-size: 16px;
+    max-width: 600px;
+    margin: 25px auto 0;
+    line-height: 1.4;
+
+    p + p {
+        margin-top: 15px;
+    }
+}

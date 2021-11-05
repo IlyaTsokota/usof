@@ -4,9 +4,9 @@ import QuestionsListItem from "../question-list-item/question-list-item";
 import './questions-list.scss';
 import Pagination from "../pagination";
 
-const QuestionsList = ({ questions, usofService, ...props  }) => {
+const QuestionsList = ({ questions, ...props  }) => {
     const questionItems = questions.map((data) => {
-        return <QuestionsListItem key={data.id} data={data} usofService={usofService} />;
+        return <QuestionsListItem key={data.id} data={data} />;
     });
 
     return (

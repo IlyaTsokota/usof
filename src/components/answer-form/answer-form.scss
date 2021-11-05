@@ -1,0 +1,18 @@
+.answer-form {
+   margin-top: 15px;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+
+   .ck-editor {
+      width: 100% !important;
+
+      &__editable {
+         height: 100px;
+      }
+   }
+
+   .btn {
+      margin-top: 15px;
+   }
+}

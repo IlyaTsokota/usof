@@ -15,8 +15,10 @@ import Stack from '@mui/material/Stack';
 import Logout from "@mui/icons-material/Logout";
 
 import imageResource from 'Utils/get-image-resource';
+import {useHistory} from "react-router-dom";
 
 const AccountMenu = ({ user, onLogout }) => {
+    const history = useHistory();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = !!anchorEl;
     const { name, avatar } = user;
@@ -79,6 +81,9 @@ const AccountMenu = ({ user, onLogout }) => {
                 <MenuItem>
                     Profile
                 </MenuItem>
+                <MenuItem onClick={() => history.push('/my-questions')}>
+                    My questions
+                </MenuItem>
                 <Divider />
                 <MenuItem onClick={() => onLogout()}>
                     <ListItemIcon>
@@ -109,6 +114,7 @@ const HeaderNav = (props) => (
 
 const HeaderContent = ({ user: { isLogged, data }, onLogout, history }) => {
     if (!isLogged || !data) {
+        console.log(data);
         return (
             <div className="header__links">
                 <button className="btn btn-mini btn-green" onClick={() => history.push('/login')}>Sign In</button>

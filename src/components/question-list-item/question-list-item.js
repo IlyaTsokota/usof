@@ -2,31 +2,9 @@ import React  from "react";
 import './question-list-item.scss';
 import {useHistory} from "react-router-dom";
 import {FacebookShareButton} from "react-share";
-import {withLike} from "../hoc";
-import Spinner from "../spinner";
+import Rating from "../rating";
 
-const RatingContent = ({likes, onLike, onDislike, loading}) => {
-    const isLogged = localStorage.getItem('user');
-
-    return (
-        <div className='question-list-item__rating'>
-            {isLogged && <div className='question-list-item__rating-minus' onClick={() => onDislike()} >
-                -
-            </div>}
-            <div className='question-list-item__rating-count'>
-                <span>Rating:</span>
-                {loading ? <Spinner classes='spinner__img-mini' /> : likes}
-            </div>
-            {isLogged && <div className='question-list-item__rating-plus' onClick={() => onLike()}>
-                +
-            </div>}
-        </div>
-    );
-};
-
-const Rating = withLike(RatingContent);
-
-const QuestionsListItem = ({data, usofService}) => {
+const QuestionsListItem = ({data}) => {
     const { id, title, body, created_at: createdAt } = data;
     const { protocol, host, pathname } = window.location;
     const shareUrl =  protocol + "//" + host + pathname;
@@ -37,7 +15,7 @@ const QuestionsListItem = ({data, usofService}) => {
             <h3 className='question-list-item__title'>{title}</h3>
             <div className='question-list-item__desc' dangerouslySetInnerHTML={{ __html: body }} />
             <div className='question-list-item__bottom'>
-                <Rating id={id} usofService={usofService} />
+                <Rating id={id} />
                 <div className='question-list-item__more btn btn-blue' onClick={() => history.push(`/questions/${id}`)}>
                     Read
                 </div>
